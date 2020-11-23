@@ -1,0 +1,12 @@
+00:10:10 **** Incremental Build of configuration Debug for project TicTacToe ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ComputerPlayer.o" "..\\src\\ComputerPlayer.cpp" 
+..\src\ComputerPlayer.cpp: In member function 'Eval ComputerPlayer::monte_carlo(Board)':
+..\src\ComputerPlayer.cpp:77:9: warning: unused variable 'max_ucb' [-Wunused-variable]
+   77 |  double max_ucb = 0;
+      |         ^~~~~~~
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Node.o" "..\\src\\Node.cpp" 
+g++ -o TicTacToe.exe "src\\Board.o" "src\\ComputerPlayer.o" "src\\HumanPlayer.o" "src\\Node.o" "src\\Player.o" "src\\Tile.o" "src\\main.o" 
+
+00:10:12 Build Finished. 0 errors, 1 warnings. (took 2s.167ms)
+

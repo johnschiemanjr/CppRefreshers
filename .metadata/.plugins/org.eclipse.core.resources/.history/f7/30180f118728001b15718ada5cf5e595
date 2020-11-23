@@ -1,0 +1,34 @@
+/*
+ * Player.cpp
+ *
+ *  Created on: Nov 16, 2020
+ *      Author: John
+ */
+
+#include "Player.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+Player::Player(bool is_human, string player_name)
+{
+	this->is_human = is_human;
+	this->player_name = player_name;
+}
+
+Player::~Player()
+{
+}
+
+string Player::get_name()
+{
+	return player_name;
+}
+
+void Player::take_turn(Board board)
+{
+	cout << player_name << " taking turn...";
+	cin >>;
+}
+

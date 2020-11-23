@@ -1,0 +1,21 @@
+/*
+ * Tile.cpp
+ *
+ *  Created on: Nov 15, 2020
+ *      Author: John
+ */
+#include "Tile.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+Tile::Tile()
+{
+}
+
+Tile::~Tile()
+{
+}
+
+

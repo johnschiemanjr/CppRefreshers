@@ -1,0 +1,51 @@
+/*
+ * Player.cpp
+ *
+ *  Created on: Nov 16, 2020
+ *      Author: John
+ */
+
+#include "Player.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+Player::Player(bool is_human, string player_name, string player_symbol)
+{
+	this->is_human = is_human;
+	this->player_name = player_name;
+	this->player_symbol = player_symbol;
+}
+
+Player::~Player()
+{
+}
+
+string Player::get_name() const
+{
+	return player_name;
+}
+
+string Player::get_symbol() const
+{
+	return player_symbol;
+}
+
+string Player::take_turn(Board board)
+{
+	cout << player_name << " taking turn...";
+	string user_choice;
+	set<string> valid_moves = board.get_valid_moves();
+	do
+	{
+		cin >> user_choice;
+		if (valid_moves.find(user_choice) != valid_moves.end())
+		{
+
+		}
+	} while (valid_moves.find(user_choice) != valid_moves.end());
+	return user_choice;
+}
+
+

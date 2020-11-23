@@ -1,0 +1,17 @@
+/*
+ * Node.cpp
+ *
+ *  Created on: Nov 19, 2020
+ *      Author: John
+ */
+
+Node::Node(bool is_leaf, Node *parent) : visits(0)
+{
+
+}
+
+Node::~Node()
+{
+}
+
+

@@ -1,0 +1,118 @@
+#include <cstdlib>
+#include <iostream>
+#include <string>
+#include <limits>
+#include <vector>
+#include <sstream>
+#include <numeric>
+#include <ctime>
+#include <cmath>
+#include "Contact.h"
+#include <memory>
+#include <set>
+#include <iterator>
+
+using namespace std;
+
+const int add_friend = 1;
+const int delete_friend = 2;
+const int show_all = 3;
+const int exit_program = 4;
+
+void print_menu();
+void add_contact(set<Contact> *phonebook);
+void delete_contact(set<Contact> *phonebook);
+void print_phonebook(set<Contact> *phonebook);
+void delete_all(set<Contact> *phonebook);
+
+int main (int argc, char** argv)
+{
+	int user_choice;
+	set<Contact> phonebook;
+	do
+	{
+		print_menu();
+		cin >> user_choice;
+		if (user_choice == add_friend)
+		{
+			add_contact(&phonebook);
+		}
+		else if (user_choice == delete_friend)
+		{
+			delete_contact(&phonebook);
+		}
+		else if (user_choice == show_all)
+		{
+			print_phonebook(&phonebook);
+		}
+	} while (user_choice != exit_program);
+
+	delete_all(&phonebook);
+
+	return 0;
+}
+
+void print_menu()
+{
+	cout << "\nPrint choice:" << endl;
+	cout << "(" << add_friend << ") Add Friend" << endl;
+	cout << "(" << delete_friend << ") Delete Friend" << endl;
+	cout << "(" << show_all << ") Print Phonebook" << endl;
+	cout << "(" << exit_program << ") Exit" << endl;
+	cout << "\nChoice:" << endl;
+}
+
+void add_contact(set<Contact> *phonebook)
+{
+	string first_name;
+	string last_name;
+	string phone_number;
+
+	cout << "First Name: " << endl;
+	cin >> first_name;
+	cout << "Last Name: " << endl;
+	cin >> last_name;
+	cout << "Phone Number: " << endl;
+	cin >> phone_number;
+
+	phonebook->insert(Contact(first_name, last_name, phone_number));
+}
+
+void delete_contact(set<Contact> *phonebook)
+{
+	string first_name;
+	string last_name;
+	string phone_number;
+
+	cout << "First Name: " << endl;
+	cin >> first_name;
+	cout << "Last Name: " << endl;
+	cin >> last_name;
+	cout << "Phone Number: " << endl;
+	cin >> phone_number;
+
+	phonebook->erase(Contact(first_name, last_name, phone_number));
+}
+
+void print_phonebook(set<Contact> *phonebook)
+{
+	if (phonebook->empty())
+	{
+		cout << "No contacts added yet!";
+	}
+	else
+	{
+		for (Contact contact : *phonebook)
+		{
+			cout << contact.get_entry() << endl;
+		}
+	}
+}
+
+void delete_all(set<Contact> *phonebook)
+{
+	for (Contact contact : *phonebook)
+	{
+		contact.~Contact();
+	}
+}

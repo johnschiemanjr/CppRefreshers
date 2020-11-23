@@ -1,0 +1,19 @@
+/*
+ * Node.cpp
+ *
+ *  Created on: Nov 19, 2020
+ *      Author: John
+ */
+
+Node::Node(string player_name, string player_symbol, Strategy strategy) :
+		Player(player_name, player_symbol),
+		strategy(strategy)
+{
+
+}
+
+Node::~Node()
+{
+}
+
+

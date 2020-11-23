@@ -1,0 +1,28 @@
+/*
+ * Board.h
+ *
+ *  Created on: Nov 15, 2020
+ *      Author: John
+ */
+
+#ifndef BOARD_H_
+#define BOARD_H_
+
+#include <string>
+#include <iostream>
+#include "Tile.h"
+
+using namespace std;
+
+class Board
+{
+public:
+	void print_board() const;
+	Tile** get_tiles() const;
+	Board():tiles;
+	virtual ~Board();
+private:
+	Tile tiles[3][3];
+};
+
+#endif /* BOARD_H_ */

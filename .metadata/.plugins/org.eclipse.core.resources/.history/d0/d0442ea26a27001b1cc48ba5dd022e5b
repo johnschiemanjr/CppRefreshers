@@ -1,0 +1,42 @@
+/*
+ * Contact.cpp
+ *
+ *  Created on: Nov 13, 2020
+ *      Author: John
+ */
+
+#include "Contact.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+Contact::Contact(string first, string last, string number)
+{
+	this->first_name = first;
+	this->last_name = last;
+	this->phone_number = number;
+}
+
+Contact::~Contact()
+{
+}
+
+string Contact::get_entry()
+{
+	return first_name + " " + last_name + ": " + phone_number;
+}
+
+bool Contact::operator < (const Contact &other) const
+{
+	if (first_name < other.first_name || last_name < other.last_name || phone_number < other.phone_number)
+	{
+		return true;
+	}
+	else
+	{
+		cout << "Duplicate contact detected, contact will not be added.";
+		return false;
+	}
+}
+

@@ -1,0 +1,17 @@
+/*
+ * Contact.cpp
+ *
+ *  Created on: Nov 13, 2020
+ *      Author: John
+ */
+
+#include "Contact.h"
+
+Contact::Contact()
+{
+}
+
+Contact::~Contact()
+{
+}
+

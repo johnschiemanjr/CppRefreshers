@@ -1,0 +1,22 @@
+/*
+ * Player.cpp
+ *
+ *  Created on: Nov 16, 2020
+ *      Author: John
+ */
+
+#include "Tile.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+Player::Player()
+{
+}
+
+Player::~Player()
+{
+}
+
+

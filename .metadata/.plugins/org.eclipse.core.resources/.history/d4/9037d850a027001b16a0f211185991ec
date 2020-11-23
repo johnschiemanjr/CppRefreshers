@@ -1,0 +1,210 @@
+#include <cstdlib>
+#include <iostream>
+#include <string>
+#include <limits>
+#include <vector>
+#include <sstream>
+#include <numeric>
+#include <ctime>
+#include <cmath>
+#include "Contact.h"
+#include <memory>
+#include <set>
+#include <iterator>
+
+using namespace std;
+
+const int add_friend = 1;
+const int delete_friend = 2;
+const int show_all = 3;
+const int sort_by_first = 4;
+const int sort_by_last = 5;
+const int search = 6;
+const int random_select = 7;
+const int delete_all_contacts = 8;
+const int exit_program = 9;
+
+void print_menu();
+void add_contact(set<Contact> *phonebook);
+void delete_contact(set<Contact> *phonebook);
+void print_phonebook(set<Contact> *phonebook);
+void sort_contacts_by_first(set<Contact> *phonebook);
+void sort_contacts_by_last(set<Contact> *phonebook);
+void search_contacts(set<Contact> *phonebook);
+void call_random(set<Contact> *phonebook);
+void delete_all(set<Contact> *phonebook);
+
+int main (int argc, char** argv)
+{
+	int user_choice;
+	set<Contact> phonebook;
+	do
+	{
+		print_menu();
+		cin >> user_choice;
+		if (user_choice == add_friend)
+		{
+			add_contact(&phonebook);
+		}
+		else if (user_choice == delete_friend)
+		{
+			delete_contact(&phonebook);
+		}
+		else if (user_choice == show_all)
+		{
+			print_phonebook(&phonebook);
+		}
+		else if (user_choice == search)
+		{
+			search_contacts(&phonebook);
+		}
+		else if (user_choice == random_select)
+		{
+			call_random(&phonebook);
+		}
+		else if (user_choice == delete_all_contacts)
+		{
+			delete_all(&phonebook);
+		}
+		else if (user_choice == exit_program)
+		{
+			// do nothing
+		}
+		else
+		{
+			cout << "ERROR: User input not recognized, please enter a valid input." << endl;
+		}
+	} while (user_choice != exit_program);
+
+	return 0;
+}
+
+void print_menu()
+{
+	cout << "\nPrint choice:" << endl;
+	cout << "(" << add_friend << ") Add Friend" << endl;
+	cout << "(" << delete_friend << ") Delete Friend" << endl;
+	cout << "(" << show_all << ") Print Phonebook" << endl;
+	cout << "(" << sort_by_first << ") Print Phonebook" << endl;
+	cout << "(" << sort_by_last << ") Print Phonebook" << endl;
+	cout << "(" << search << ") Search for Contact" << endl;
+	cout << "(" << random_select << ") Call Random Contact" << endl;
+	cout << "(" << delete_all_contacts << ") Delete All" << endl;
+	cout << "(" << exit_program << ") Exit" << endl;
+	cout << "\nChoice:" << endl;
+}
+
+void add_contact(set<Contact> *phonebook)
+{
+	string first_name;
+	string last_name;
+	string phone_number;
+
+	cout << "First Name: " << endl;
+	cin >> first_name;
+	cout << "Last Name: " << endl;
+	cin >> last_name;
+	cout << "Phone Number: " << endl;
+	cin >> phone_number;
+
+	phonebook->insert(Contact(first_name, last_name, phone_number));
+}
+
+void delete_contact(set<Contact> *phonebook)
+{
+	string first_name;
+	string last_name;
+	string phone_number;
+
+	cout << "First Name: " << endl;
+	cin >> first_name;
+	cout << "Last Name: " << endl;
+	cin >> last_name;
+	cout << "Phone Number: " << endl;
+	cin >> phone_number;
+
+	phonebook->erase(Contact(first_name, last_name, phone_number));
+}
+
+void print_phonebook(set<Contact> *phonebook)
+{
+	if (phonebook->empty())
+	{
+		cout << "No contacts added yet!" << endl;
+	}
+	else
+	{
+		for (Contact contact : *phonebook)
+		{
+			cout << contact.get_entry() << endl;
+		}
+	}
+}
+
+void sort_contacts_by_first(set<Contact> *phonebook)
+{
+
+}
+
+void sort_contacts_by_last(set<Contact> *phonebook)
+{
+
+}
+
+void search_contacts(set<Contact> *phonebook)
+{
+	string first_name;
+	string last_name;
+
+	cout << "Find Phone Number for... " << endl;
+	cout << "First Name: " << endl;
+	cin >> first_name;
+	cout << "Last Name: " << endl;
+	cin >> last_name;
+
+	set<Contact> foundContacts;
+	set<Contact>::iterator iterator;
+	for (iterator = phonebook->begin(); iterator != phonebook->end(); iterator++)
+	{
+		Contact contact = *iterator;
+		if (contact.get_first_name().compare(first_name) == 0
+				&& contact.get_last_name().compare(last_name) == 0)
+		{
+			foundContacts.insert(Contact(first_name, last_name, contact.get_phone_number()));
+		}
+	}
+
+	if (foundContacts.empty())
+	{
+		cout << "Contact not found..." << endl;
+	}
+	else
+	{
+		for (iterator = foundContacts.begin(); iterator != foundContacts.end(); iterator++)
+		{
+			Contact contact = *iterator;
+			cout << "Found contact: " << contact.get_entry() << endl;
+		}
+	}
+}
+
+void call_random(set<Contact> *phonebook)
+{
+	if (phonebook->empty())
+	{
+		cout << "Unable to place call - no contacts in phonebook!";
+		return;
+	}
+	auto iterator = phonebook->cbegin();
+	int random = rand() % phonebook->size();
+	advance(iterator, random);
+
+	Contact contact = *iterator;
+
+	cout << "Calling " << contact.get_entry() << endl;
+}
+
+void delete_all(set<Contact> *phonebook)
+{
+	phonebook->clear();
+}

@@ -1,0 +1,18 @@
+/*
+ * TileStatus.h
+ *
+ *  Created on: Nov 15, 2020
+ *      Author: John
+ */
+
+#ifndef TILESTATUS_H_
+#define TILESTATUS_H_
+
+enum
+{
+    UNOCCUPIED = 0,
+    O = 1,
+	X = 2
+};
+
+#endif /* TILESTATUS_H_ */

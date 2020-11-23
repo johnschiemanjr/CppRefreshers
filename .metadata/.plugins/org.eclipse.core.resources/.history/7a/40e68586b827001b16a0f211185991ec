@@ -1,0 +1,45 @@
+/*
+ * Tile.cpp
+ *
+ *  Created on: Nov 15, 2020
+ *      Author: John
+ */
+#include "Tile.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+struct MyException : public exception {
+   const char * what () const throw () {
+      return "C++ Exception";
+   }
+};
+
+Tile::Tile(string status)
+{
+	this->status = status;
+}
+
+Tile::~Tile()
+{
+}
+
+string Tile::get_status() const
+{
+	return status;
+}
+
+void Tile::set_status(string status)
+{
+	if (status != O || status != X)
+	{
+		throw "ERROR: Invalid symbol given to board: " << status;
+	}
+	else
+	{
+		this->status = status;
+	}
+}
+
+

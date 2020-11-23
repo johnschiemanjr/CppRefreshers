@@ -1,0 +1,35 @@
+/*
+ * Tile.h
+ *
+ *  Created on: Nov 15, 2020
+ *      Author: John
+ */
+
+#ifndef TILE_H_
+#define TILE_H_
+
+#include <string>
+
+using namespace std;
+
+class Tile
+{
+public:
+	Tile();
+	virtual ~Tile();
+private:
+	char status;
+};
+
+char Tile::get_status() const
+{
+	return first_name;
+}
+
+string Contact::get_first_name() const
+{
+	return first_name;
+}
+
+
+#endif /* TILE_H_ */

@@ -1,0 +1,8 @@
+19:44:04 **** Rebuild of configuration Debug for project Phonebook ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Contact.o" "..\\src\\Contact.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.cpp" 
+g++ -o Phonebook.exe "src\\Contact.o" "src\\main.o" 
+
+19:44:06 Build Finished. 0 errors, 0 warnings. (took 2s.117ms)
+

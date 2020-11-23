@@ -1,0 +1,74 @@
+#include <iostream>
+#include <vector>
+#include <time.h>
+#include <random>
+#include "Board.h"
+#include "Player.h"
+#include "ComputerPlayer.h"
+#include "HumanPlayer.h"
+#include "Tile.h"
+#include <utility>
+#include <memory>
+#include <map>
+
+using namespace std;
+
+int main()
+{
+	map<int, int> map_ex;
+	map_ex.insert(pair<int, int> (1, 2));
+    for (itr = map_ex.begin(); itr != map_ex.end(); ++itr) {
+        cout << '\t' << itr->first
+             << '\t' << itr->second << '\n';
+    }
+    cout << endl;
+
+	Board board = Board();
+	board.print_board();
+
+	HumanPlayer *human = (new HumanPlayer("Human", O));
+	ComputerPlayer *computer = new ComputerPlayer("Computer", X);
+	vector<Player*> players;
+
+	srand(time(NULL));
+	if (rand() % 2 == 0)
+	{
+		cout << human->get_name() << " goes first!" << endl;
+		players.push_back(human);
+		players.push_back(computer);
+	}
+	else
+	{
+		cout << computer->get_name() << " goes first!" << endl;
+		players.push_back(computer);
+		players.push_back(human);
+	}
+
+	int turn_counter = 0;
+	do
+	{
+		string move = players[turn_counter % 2]->take_turn(board);
+		board.make_move(move, players[turn_counter % 2]->get_symbol());
+		turn_counter++;
+
+		board.print_board();
+
+	} while (!board.is_game_over());
+
+	const int MAX_MOVES = 9;
+	if (turn_counter == MAX_MOVES)
+	{
+		cout << "It's a draw!" << endl;
+	}
+	else
+	{
+		cout << players[--turn_counter % 2]->get_name() << " is the winner!" << endl;
+	}
+
+	board.print_board();
+
+	delete human;
+	delete computer;
+
+	return 0;
+}

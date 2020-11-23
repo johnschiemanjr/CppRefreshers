@@ -1,0 +1,25 @@
+/*
+ * ComputerPlayer.h
+ *
+ *  Created on: Nov 16, 2020
+ *      Author: John
+ */
+
+#ifndef COMPUTERPLAYER_H_
+#define COMPUTERPLAYER_H_
+
+#include <string>
+#include "Player.h"
+
+using namespace std;
+
+class ComputerPlayer : public Player
+{
+public:
+	using Player::Player;
+	using Player::get_name;
+	using Player::get_symbol;
+	string take_turn(Board board) override;
+};
+
+#endif /* COMPUTERPLAYER_H_ */

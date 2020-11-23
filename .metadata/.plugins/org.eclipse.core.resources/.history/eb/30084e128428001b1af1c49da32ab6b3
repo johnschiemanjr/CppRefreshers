@@ -1,0 +1,27 @@
+/*
+ * Player.h
+ *
+ *  Created on: Nov 16, 2020
+ *      Author: John
+ */
+
+#ifndef PLAYER_H_
+#define PLAYER_H_
+
+#include <string>
+
+using namespace std;
+
+class Player
+{
+public:
+	Player(bool, string);
+	string get_name();
+	virtual ~Player();
+private:
+	bool is_human;
+	bool has_winner;
+	string player_name;
+};
+
+#endif /* PLAYER_H_ */

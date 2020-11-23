@@ -1,0 +1,22 @@
+/*
+ * Contact.h
+ *
+ *  Created on: Nov 13, 2020
+ *      Author: John
+ */
+#include <string>
+
+#ifndef CONTACT_H_
+#define CONTACT_H_
+
+class Contact
+{
+public:
+	string first_name;
+	string last_name;
+	string phone_number;
+	Contact();
+	virtual ~Contact();
+};
+
+#endif /* CONTACT_H_ */

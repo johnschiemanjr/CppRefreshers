@@ -1,0 +1,37 @@
+/*
+ * Contact.cpp
+ *
+ *  Created on: Nov 13, 2020
+ *      Author: John
+ */
+
+#include "Contact.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+Contact::Contact(string first, string last, string number)
+{
+	this->first_name = first;
+	this->last_name = last;
+	this->phone_number = number;
+}
+
+Contact::~Contact()
+{
+}
+
+string Contact::get_entry()
+{
+	return first_name + " " + last_name + ": " + phone_number;
+}
+
+bool operator() (Contact* contact1, Contact* contact2)
+{
+	cout << "hello" << endl;
+	return contact1->first_name.compare(contact2->first_name) == 0
+			&& contact1->last_name.compare(contact2->last_name) == 0
+			&& contact1->phone_number.compare(contact2->phone_number) == 0;
+}
+

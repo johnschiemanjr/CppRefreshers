@@ -1,0 +1,30 @@
+/*
+ * Contact.h
+ *
+ *  Created on: Nov 13, 2020
+ *      Author: John
+ */
+#ifndef CONTACT_H_
+#define CONTACT_H_
+
+#include <string>
+
+using namespace std;
+
+class Contact
+{
+public:
+	Contact(string first, string last, string number);
+	string get_entry() const;
+	string get_first_name() const;
+	string get_last_name() const;
+	string get_phone_number() const;
+	bool operator < (const Contact &other) const;
+	virtual ~Contact();
+private:
+	string first_name;
+	string last_name;
+	string phone_number;
+};
+
+#endif /* CONTACT_H_ */
